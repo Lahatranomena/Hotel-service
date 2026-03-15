@@ -22,9 +22,9 @@ public class BookingController {
     @PostMapping("/booking")
     public ResponseEntity<Object>  createBooking(@RequestBody Booking booking){
         for(Booking b : bookings){
-            if(b.getRoomNumber() ==  booking.getRoomNumber()
+            if (b.getRoomNumber() ==  booking.getRoomNumber()
             && b.getDate().equals(booking.getDate())){
-                return ResponseEntity.status(409).body("La chambre " + booking.getRoomNumber() + " est déjà réservée.");
+                return ResponseEntity.status(409).body("La chambre " + booking.getRoomNumber() + " est déjà réservée pour la date "+booking.getDate());
             }
         }
         bookings.add(booking);
